@@ -32,21 +32,12 @@ app.get("/api/whoami", function (req, res) {
   //   "unix": date.getTime(), "utc": date.toUTCString()
   // });
   
-  //let ipAddress = req.ip;
+  let allHeaders = req.headers;
   res.json({
+    "allHeaders": allHeaders,
     "ipaddress": req.ip,
     "language": req.get('Accept-Language'),
-    // "language": req.acceptsLanguages(),
-    "otherHeadersTest1": req.get('Access-Control-Request-Method'),
-    "otherHeadersTest2": req.get('Authorization'),
-    "otherHeadersTest3": req.get('Content-Type'),
-    "otherHeadersTest4": req.get('Date'),
-    "otherHeadersTest5": req.get('Forwarded'),
-    "otherHeadersTest6": req.get('Origin'),
-    "otherHeadersTest7": req.get('Referrer'),
-    "otherHeadersTest8": req.get('Access-Control-Request-Headers'),
-    "otherHeadersTest9": req.get('Accept-EncodingHeaders'),
-    "otherHeadersHost": req.get('Host'),
+    // "altlanguage": req.acceptsLanguages(),
     "software": req.get('User-Agent')
   });
 });
