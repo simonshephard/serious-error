@@ -27,16 +27,18 @@ app.get("/api/hello", function (req, res) {
 // get IP address, preferred languages, and system info
 app.get("/api/whoami", function (req, res) {
   
-  let ipAddress = req.ip;
   // let date = new Date(req.params.date_string);
   // res.json({
   //   "unix": date.getTime(), "utc": date.toUTCString()
   // });
   
+  //let ipAddress = req.ip;
   res.json({
     "ipaddress": req.ip,
-    "language": "en-US,en;q=0.5",
-    "software": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+    "testLanguage": req.headers['accept-language'],
+    "language": req.acceptsLanguages(),
+    "testSoftware": req.headers['user-agent'],
+    "software": req.userAgent()
   });
 });
 
